@@ -16,5 +16,9 @@ console.log("this is a string")
 
 
 
-let x = 10;
-console.log(--x);
+
+
+let x = 8;
+x++;
+x/=3;
+console.log(x);
