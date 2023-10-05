@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Image Assignment Game</title>
+</head>
+<body>
+    <div id="imageContainer">
+        <img id="assignedImage" src="" alt="Assigned Image">
+    </div>
+    <p id="feedbackSentence">Click a button to confirm the image.</p>
+    <button id="generateButton">Generate Image</button>
+    <button id="button1">Button 1</button>
+    <button id="button2">Button 2</button>
+    <button id="button3">Button 3</button>
+
+    <script src="script.js">
+// Array of image URLs
+const imageUrls = [
+    'image1.jpg',
+    'image2.jpg',
+    'image3.jpg'
+];
+
+// Object to map buttons to images
+const buttonToImageMap = {
+    button1: '',
+    button2: '',
+    button3: ''
+};
+
+// Function to generate and assign a random image
+function assignRandomImage() {
+    const randomIndex = Math.floor(Math.random() * imageUrls.length);
+    const imageUrl = imageUrls[randomIndex];
+
+    // Update the image source
+    const assignedImage = document.getElementById('assignedImage');
+    assignedImage.src = imageUrl;
+
+    // Reset the feedback sentence
+    const feedbackSentence = document.getElementById('feedbackSentence');
+    feedbackSentence.textContent = 'Click a button to confirm the image.';
+
+    return imageUrl;
+}
+
+// Function to check if the button matches the assigned image
+function checkImage(buttonId, imageUrl) {
+    const assignedImageUrl = buttonToImageMap[buttonId];
+    const feedbackSentence = document.getElementById('feedbackSentence');
+    const synth = window.speechSynthesis;
+    const utterance = new SpeechSynthesisUtterance();
+
+    if (assignedImageUrl === imageUrl) {
+        feedbackSentence.textContent = 'Good';
+        utterance.text = 'Good';
+    } else {
+        feedbackSentence.textContent = 'Try again';
+        utterance.text = 'Try again';
+    }
+
+    // Use the speech synthesis API to speak the feedback
+    synth.speak(utterance);
+}
+
+// Add click event listeners to each button
+const generateButton = document.getElementById('generateButton');
+const button1 = document.getElementById('button1');
+const button2 = document.getElementById('button2');
+const button3 = document.getElementById('button3');
+
+generateButton.addEventListener('click', () => {
+    const imageUrl = assignRandomImage();
+    buttonToImageMap.button1 = imageUrl;
+    buttonToImageMap.button2 = imageUrl;
+    buttonToImageMap.button3 = imageUrl;
+});
+
+button1.addEventListener('click', () => checkImage('button1', assignedImage.src));
+button2.addEventListener('click', () => checkImage('button2', assignedImage.src));
+button3.addEventListener('click', () => checkImage('button3', assignedImage.src));
+
+
+
+
+    </script>
+</body>
+</html>

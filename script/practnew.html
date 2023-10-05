@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Identification Game</title>
+    <!-- Add your CSS link here if needed -->
+    <link rel="stylesheet" type="text/css" href= "css/object.css">
+</head>
+<body>
+    <h1 id="identify">Object Identification Game</h1>
+    <div id="image-container">
+        <img id="image-display" src="" alt="Random Image">
+    </div>
+    <div id="button-container">
+        <button class="object-button" id="cat">Cat</button>
+        <button class="object-button" id="elephant">Elephant</button>
+        <button class="object-button" id="dog">Dog</button>
+        <button class="object-button" id="butterfly">Butterfly</button>
+        <button class="object-button" id="fox">Fox</button>
+        <button class="object-button" id="lizard">Lizard</button>
+        <button class="object-button" id="lion">Lion</button>
+        <button class="object-button" id="car">Car</button>
+        <button class="object-button" id="bear">Bear</button>
+        <button class="object-button" id="banana">Banana</button>
+    </div>
+    <div id="result-message"></div>
+    <button id="changeImageButton">Generate Image</button>
+    <button id="resetButton">Reset</button>
+
+    <script>
+        let imageToshow = [
+    'images/cat.jpg', 
+    'images/elephant.jpg',
+    'images/dog.jpg',
+    'images/butterfly.jpg',
+    'images/fox.jpg',
+    'images/lizard.jpg',
+    'images/lion.jpg',
+    'images/car.jpg',
+    'images/bear.jpg',
+    'images/banana.jpg'
+];
+
+let currentImageId; // Store the ID of the currently displayed image
+
+function changeRandomImage() {
+    let imageDisplay = document.getElementById('imagedisplay');
+    let randomIndex = Math.floor(Math.random() * imageToshow.length);
+    let allImages = imageToshow[randomIndex];
+
+    currentImageId = allImages.split('.')[0];
+
+    let imgElement = document.createElement('img');
+    imgElement.src = allImages;
+    imgElement.alt = 'Random Image';
+    imgElement.width = 450;
+    imgElement.height = 340;
+
+    imageDisplay.innerHTML = '';
+    imageDisplay.appendChild(imgElement);
+
+    // Assign currentImageId to the generated button
+    let generatedButton = document.getElementById('generatedButton');
+    generatedButton.id = currentImageId;
+}
+
+let changeImageButton = document.getElementById('changeImageButton');
+changeImageButton.addEventListener('click', changeRandomImage);
+changeRandomImage();
+
+// Add event listeners to the buttons for object identification
+document.getElementById('cat').addEventListener('click', () => identifyObject('cat'));
+document.getElementById('ele').addEventListener('click', () => identifyObject('ele'));
+document.getElementById('dog').addEventListener('click', () => identifyObject('dog'));
+document.getElementById('butterfly').addEventListener('click', () => identifyObject('butterfly'));
+document.getElementById('fox').addEventListener('click', () => identifyObject('fox'));
+document.getElementById('lizard').addEventListener('click', () => identifyObject('lizard'));
+document.getElementById('lion').addEventListener('click', () => identifyObject('lion'));
+document.getElementById('car').addEventListener('click', () => identifyObject('car'));
+document.getElementById('bear').addEventListener('click', () => identifyObject('bear'));
+document.getElementById('banana').addEventListener('click', () => identifyObject('banana'));
+
+function identifyObject(clickedObject) {
+    console.log('currentImageId:', currentImageId);
+    console.log('clickedObject:', clickedObject);
+
+    if (currentImageId === clickedObject) {
+        alert('Excellent! You identified the object correctly.');
+    } else {
+        alert('Try again. You identified the wrong object.');
+    }
+}
+    </script>
+</body>
+</html>

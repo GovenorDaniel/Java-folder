@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>practice</title>
+</head>
+
+<body>
+
+
+
+
+    <img id="myImage" src="images/cat.jpg" alt="Image 1">
+    <button onclick="changeImage()">Change Image</button>
+
+    
+
+  <script>
+function changeImage() {
+    let imageElement = document.getElementById("myImage");
+    
+    // Check the current image source
+    if (imageElement.src.endsWith("images/cat.jpg")) {
+
+        // Change to a different image
+        imageElement.src = "images/dog.jpg";
+        imageElement.alt = "Image 2";
+    } else {
+        // Change back to the original image
+        imageElement.src = "images/cat.jpg";
+        imageElement.alt = "Image 1";
+    }
+}
+
+
+
+  </script>
+
+
+
+</body>
+    

@@ -1,0 +1,262 @@
+
+/* Body Styles */
+
+body{
+    background-color:lightblue;
+    display: flex;
+    justify-content: center;
+    align-items: right;
+    flex-direction: column;
+    margin-left: 500px;
+   
+}
+
+/* Game Title Styles */
+#display{
+
+    margin-left: 200px;
+}
+
+/* Styles for Left and Right Button Groups */
+#first{
+    display: flex;
+}
+
+/* Styles for Game Instructions */
+
+#instructions{
+    height: 247px;
+    width: 440px;
+    background-color:#32a8a4;
+    border: 10px double white;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    
+}
+
+/* Styles for Object Buttons */
+
+
+#changeImageButton{
+    height: 50px;
+    width: 180px;
+    font-size: 20px;
+    margin-top: 5px;
+    margin-left: 300px;
+    font-weight: bold;
+    background-color: rgba(47, 255, 134, 0.655);
+    border: 3px solid;
+    border-radius: 20%;
+}
+
+/* Hover Effect for Change Image Button */
+
+#changeImageButton:hover{
+    background-color: aqua;
+    color: red;
+}
+
+/* Styles for Object Buttons on Left and Right Sides */
+
+
+#rightButtonsList{
+    margin-left: 60px;
+   
+   
+}
+#leftButtonsList{
+    margin-right: 60px;
+   
+   
+}
+
+
+/* Styles for Object Buttons */
+#ele{
+    height: 50px;
+    width: 100px;
+    border-radius: 20px;
+    font-size: 20px;
+    
+}
+#cat{
+    height: 50px;
+    width: 100px;
+    border-radius: 20px;
+    font-size: 20px;
+}
+#dog{
+    height: 50px;
+    width: 100px;
+    border-radius: 20px;
+    font-size: 20px;
+}
+
+#car{
+    height: 50px;
+    width: 100px;
+    border-radius: 20px;
+    font-size: 20px;
+   
+}
+
+#banana{
+    height: 50px;
+    width: 100px;
+    border-radius: 20px;
+    font-size: 20px;
+}
+#butterfly{
+    height: 50px;
+    width: 100px;
+    border-radius: 20px;
+    font-size: 20px;
+}
+
+#lizard{
+    height: 50px;
+    width: 100px;
+    border-radius: 20px;
+    font-size: 20px;
+}
+
+#lion{
+    height: 50px;
+    width: 100px;
+    border-radius: 20px;
+    font-size: 20px;
+}
+
+#bear{
+    height: 50px;
+    width: 100px;
+    border-radius: 20px;
+    font-size: 20px;
+}
+
+#fox{
+    height: 50px;
+    width: 100px;
+    border-radius: 20px;
+    font-size: 20px;
+}
+
+
+/* Hover Effect for Object Buttons */
+
+#car:hover, #dog:hover, #ele:hover, #cat:hover, #banana:hover, #butterfly:hover, #lizard:hover, #lion:hover, #bear:hover, #fox:hover{
+    background-color: green;
+}
+
+
+/* Styles for Image Container */
+.container {
+    position:relative;
+    width: 25%;
+    margin-top: 10px;
+
+  }
+  
+  /* Styles for Image */
+  .image {
+    display: block;
+    width: 80%;
+    height: auto;
+  }
+  
+  /* Styles for Overlay */
+  .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #008CBA;
+    overflow: hidden;
+    width: 440px;
+    height: 245px;
+    -webkit-transform: scale(0);
+    -ms-transform: scale(0);
+    transform: scale(0);
+    -webkit-transition: .3s ease;
+    transition: .3s ease;
+  }
+  
+  /* Hover Effect for Overlay */
+  .container:hover .overlay {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+  }
+  
+  /* Styles for Overlay Text */
+  .text {
+    color: white;
+    font-size: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  
+
+  #myImage{
+    width: 440px;
+    height: 350px;
+    border: 10px double white;
+  }
+
+  /* Styles for Image Display */
+
+#imagedisplay{
+    margin-left: 160px;
+   
+}
+
+/* Styles for Restart Button */
+#restart{
+    height: 50px;
+    width: 180px;
+    font-size: 20px;
+    margin-top: 5px;
+    margin-left: 300px;
+    font-weight: bold;
+    background-color: rgb(255, 64, 47);
+    border: 3px solid;
+    border-radius: 20%;
+}
+
+/* Hover Effect for Restart Button */
+#restart:hover{
+    background-color: aqua;
+    color: red;
+}
+
+
+
+/* Styles for Loading Indicator */
+.loading {
+    display: none;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db;
+    border-radius: 50%;
+    animation: spin 7s linear infinite;
+}
+
+/* Loading Animation Keyframes */
+@keyframes spin {
+    0% { transform: translate(0%, 0%) rotate(0deg); }
+    100% { transform: translate(0%, 0%) rotate(360deg); }
+}
+

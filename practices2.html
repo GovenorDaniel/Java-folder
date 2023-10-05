@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>practice</title>
+</head>
+
+<body>
+
+
+    <div id="imageContainer">
+        <!-- Images will be displayed here -->
+    </div>
+    <button id="changeImageButton">Change Image</button>
+
+
+
+    
+
+  <script>
+// Array of image URLs
+const imageUrls = [
+    'images/cat.jpg',
+    'images/elephant.jpg',
+    'images/dog.jpg',
+    'images/butterfly.jpg',
+    'images/fox.jpg',
+    'images/lizard.jpg',
+    'images/lion.jpg',
+    'images/car.jpg',
+    'images/bear.jpg',
+    'images/banana.jpg'
+];
+
+// Function to change the image randomly
+function changeRandomImage() {
+    const imageContainer = document.getElementById('imageContainer');
+    const randomIndex = Math.floor(Math.random() * imageUrls.length);
+    const imageUrl = imageUrls[randomIndex];
+
+    // Create an image element 
+    const imgElement = document.createElement('img');
+
+    // Set the image source and alt text
+    imgElement.src = imageUrl;
+    imgElement.alt = 'Random Image';
+
+     // Resize the image by setting width and height attributes
+     imgElement.width = 440; // Change this value to the desired width
+    imgElement.height = 390; // Change this value to the desired height
+
+    // Clear the previous image(s) and append the new one
+    imageContainer.innerHTML = '';
+    imageContainer.appendChild(imgElement);
+}
+
+// Add a click event listener to the button
+const changeImageButton = document.getElementById('changeImageButton');
+changeImageButton.addEventListener('click', changeRandomImage);
+
+// Initially load a random image
+changeRandomImage();
+
+
+
+  </script>
+
+
+
+</body>
+    
