@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Identification Game</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
+    <style>
+        /* Add some styling here */
+    </style>
+</head>
+<body>
+    <h1>Object Identification Game</h1>
+    <img id="gameImage" src="example.jpg" alt="Object to Identify">
+    <p>What do you see in the image?</p>
+    <input type="text" id="userInput">
+    <button id="checkButton">Check</button>
+    <p id="message"></p>
+
+    <script>
+        let model;
+
+        async function loadModel() {
+            model = await cocoSsd.load();
+        }
+
+        loadModel();
+
+        const gameImage = document.getElementById("gameImage");
+        const userInput = document.getElementById("userInput");
+        const checkButton = document.getElementById("checkButton");
+        const message = document.getElementById("message");
+
+        checkButton.addEventListener("click", async () => {
+            const predictions = await model.detect(gameImage);
+            const objectsInImage = predictions.map(prediction => prediction.class);
+
+            const userGuess = userInput.value.toLowerCase();
+            if (objectsInImage.includes(userGuess)) {
+                message.textContent = "Correct! You identified the object.";
+            } else {
+                message.textContent = "Incorrect. Try again!";
+            }
+
+            userInput.value = "";
+        });
+    </script>
+</body>
+</html>

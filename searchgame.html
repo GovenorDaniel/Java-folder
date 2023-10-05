@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Identification Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #image-container {
+            margin: 20px;
+        }
+        #result {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Object Identification Game</h1>
+    <div id="image-container">
+        <img id="image" src="" alt="Object Image">
+    </div>
+    <button id="next-button">Next Object</button>
+    <p id="result"></p>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet"></script>
+    <script>
+        const imageContainer = document.getElementById("image-container");
+        const imageElement = document.getElementById("image");
+        const nextButton = document.getElementById("next-button");
+        const resultElement = document.getElementById("result");
+
+        let mobilenet;
+        let currentObjectIndex = 0;
+        const objectsToIdentify = [
+            "cat",
+            "dog",
+            "car",
+            "banana",
+            "book",
+            
+        ];
+
+        async function loadMobileNet() {
+            mobilenet = await mobilenet.load();
+            loadNextObject();
+        }
+
+        async function loadNextObject() {
+            if (currentObjectIndex < objectsToIdentify.length) {
+                const object = objectsToIdentify[currentObjectIndex];
+                resultElement.textContent = "";
+                imageElement.src = `images/${object}.jpg`; // Change the path to your image directory
+                currentObjectIndex++;
+            } else {
+                resultElement.textContent = "Game Over!";
+                nextButton.disabled = true;
+            }
+        }
+
+        nextButton.addEventListener("click", () => {
+            identifyObject();
+        });
+
+        async function identifyObject() {
+            if (mobilenet && imageElement.complete) {
+                const predictions = await mobilenet.classify(imageElement);
+                const topPrediction = predictions[0];
+                resultElement.textContent = `I see a "${topPrediction.className}" with ${Math.round(
+                    topPrediction.probability * 100
+                )}% confidence.`;
+            } else {
+                resultElement.textContent = "Model or image not loaded.";
+            }
+        }
+
+        loadMobileNet();
+    </script>
+</body>
+</html>

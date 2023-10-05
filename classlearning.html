@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <h1 id="text" onclick="">Education Class</h1>
+    <h1>hello man</h1>
+    <p id="para">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. A recusandae culpa minima, excepturi maiores quos quam tempora deserunt deleniti perferendis nihil facere quia dolore, eveniet aperiam, itaque hic. Vitae, iste?
+    </p>
+    <img id="frog" src="https://media.11alive.com/assets/WXIA/images/284967467/284967467_750x422.jpg" onclick="changeImage()"/>
+    
+    <button onclick="changeColor()">click me</button>
+
+
+
+    
+
+
+  
+
+
+
+
+
+
+
+   
+
+
+
+
+  <script>
+
+
+let heading = document.getElementById("text").innerText ="DOM CLASS"
+let h1 = document.getElementsByTagName("h1")[1]
+console.log(h1)
+// .innerHTML = "DOM CLASS"
+console.log({heading})
+
+
+
+
+function changeImage(){
+    let image = document.getElementById("frog")
+    image.src = "https://s3.amazonaws.com/media.jungledragon.com/images/2/132967_medium.jpg?AWSAccessKeyId=05GMT0V3GWVNE7GGM1R2&Expires=1696464010&Signature=rdKLjjQM2yFGSNVRg%2FqgRepwyIQ%3D"
+
+}
+
+
+
+
+function changeColor (){
+    let paragraph = document.getElementById("para");
+       paragraph.style.backgroundColor = "purple"
+}
+
+
+
+
+
+let button = document.getElementById("btn")
+
+button.onclick = function (){
+    let paragraph = document.getElementById("para");
+       paragraph.style.backgroundColor = "purple"
+}
+  </script>
+   
+
+   
+    
+</body>
+</html>

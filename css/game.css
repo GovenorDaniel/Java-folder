@@ -1,0 +1,24 @@
+
+body{
+    background-color:lightblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+div{
+    height: 350px;
+    width: 500px;
+    background-color:#32a8a4;
+    border: 10px double white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#input{
+    height: 50px;
+    width: 150px;
+    font-size: 20px;
+}
